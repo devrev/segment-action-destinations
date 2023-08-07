@@ -6,11 +6,13 @@ import createWork from './createWork'
 import createRevUser from './createRevUser'
 import { devrevApiPaths, devrevApiRoot } from './utils'
 
+import streamEvent from './streamEvent'
+
 const destination: DestinationDefinition<Settings> = {
   name: 'DevRev',
   slug: 'actions-devrev',
   mode: 'cloud',
-
+  description: 'Send Segment events via Cloud Mode to DevRev to create work items and RevUsers',
   extendRequest: ({ settings }) => {
     return {
       headers: { Authorization: `${settings.apiKey}` }
@@ -32,7 +34,7 @@ const destination: DestinationDefinition<Settings> = {
         type: 'string',
         required: false,
         default: 'gmail.com,hotmail.com,outlook.com,yahoo.com,aol.com,icloud.com,me.com,msn.com'
-      },
+      }
     },
     testAuthentication: (request) => {
       // Return a request that tests/validates the user's credentials.
@@ -44,7 +46,8 @@ const destination: DestinationDefinition<Settings> = {
   },
   actions: {
     createWork,
-    createRevUser
+    createRevUser,
+    streamEvent
   }
 }
 
