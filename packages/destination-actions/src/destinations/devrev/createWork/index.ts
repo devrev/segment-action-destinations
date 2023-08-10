@@ -105,10 +105,13 @@ const action: ActionDefinition<Settings, Payload> = {
     },
     assignTo: async (request, { settings }): Promise<DynamicFieldResponse> => {
       try {
-        const results: DevUserListResponse = await request(`${getBaseUrl(settings)}${devrevApiPaths.devUsersList}`, {
-          method: 'get',
-          skipResponseCloning: true
-        })
+        const results: DevUserListResponse = await request(
+          `${getBaseUrl(settings)}${devrevApiPaths.devUsersList}?state=active`,
+          {
+            method: 'get',
+            skipResponseCloning: true
+          }
+        )
         const choices = results.data.dev_users.map((user) => {
           return { value: user.id, label: `${user.full_name} <${user.email}>` }
         })
