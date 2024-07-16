@@ -122,6 +122,7 @@ export interface CreateAccountBody {
   domains?: string[]
   tags?: { id: string }[]
   external_refs: string[]
+  owned_by?: string[]
 }
 
 export interface CreateRevUserBody {
@@ -130,6 +131,7 @@ export interface CreateRevUserBody {
   display_name?: string
   tags?: { id: string }[]
   org_id?: string
+  custom_fields?: Record<string, string>
 }
 
 export interface TraceEvent {

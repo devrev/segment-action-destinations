@@ -8,6 +8,10 @@ import { devrevApiPaths, getBaseUrl } from './utils'
 
 import streamEvent from './streamEvent'
 
+import createContact from './createContact'
+
+import createEngagement from './createEngagement'
+
 const destination: DestinationDefinition<Settings> = {
   name: 'DevRev',
   slug: 'actions-devrev',
@@ -47,7 +51,9 @@ const destination: DestinationDefinition<Settings> = {
   actions: {
     createWork,
     createRevUser,
-    streamEvent
+    streamEvent,
+    createContact,
+    createEngagement
   }
 }
 
